@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arasy · Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --floresta:#1A4A2E;
+  --floresta2:#0F2B1A;
+  --sol:#F2A013;
+  --terra:#C8410B;
+  --areia:#F7EDD8;
+  --branco:#FFFDF7;
+}
+
+html,body{
+  min-height:100%;
+  width:100%;
+  background:var(--floresta2);
+  font-family:'DM Sans',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* fundo com grade geométrica */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    repeating-linear-gradient(90deg,rgba(242,160,19,.04) 0,rgba(242,160,19,.04) 1px,transparent 1px,transparent 48px),
+    repeating-linear-gradient(0deg,rgba(242,160,19,.04) 0,rgba(242,160,19,.04) 1px,transparent 1px,transparent 48px);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* glow radial do sol */
+body::after{
+  content:'';
+  position:fixed;
+  bottom:-200px;
+  left:50%;
+  transform:translateX(-50%);
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(242,160,19,.13) 0%,rgba(200,65,11,.07) 40%,transparent 70%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.page{
+  position:relative;
+  z-index:1;
+  max-width:420px;
+  margin:0 auto;
+  padding:56px 24px 64px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+}
+
+/* ── avatar ── */
+.avatar{
+  width:84px;
+  height:84px;
+  border-radius:50%;
+  background:var(--floresta);
+  border:2px solid rgba(242,160,19,.4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+  position:relative;
+  animation:pulse-ring 3s ease-in-out infinite;
+}
+@keyframes pulse-ring{
+  0%,100%{box-shadow:0 0 0 0 rgba(242,160,19,.0)}
+  50%{box-shadow:0 0 0 8px rgba(242,160,19,.12)}
+}
+
+.avatar-logo{
+  font-family:'Fraunces',serif;
+  font-size:28px;
+  font-weight:900;
+  font-style:italic;
+  color:var(--areia);
+  letter-spacing:-1px;
+}
+.avatar-logo span{color:var(--sol);font-style:normal}
+
+/* ── nome e bio ── */
+.nome{
+  font-family:'Fraunces',serif;
+  font-size:22px;
+  font-weight:900;
+  font-style:italic;
+  color:var(--areia);
+  letter-spacing:-0.5px;
+  margin-bottom:6px;
+  text-align:center;
+}
+.nome span{color:var(--sol);font-style:normal}
+
+.bio{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:rgba(247,237,216,.45);
+  text-align:center;
+  margin-bottom:8px;
+}
+
+.tagline{
+  font-size:13px;
+  color:rgba(247,237,216,.55);
+  text-align:center;
+  line-height:1.6;
+  max-width:280px;
+  margin-bottom:36px;
+  font-style:italic;
+  font-family:'Fraunces',serif;
+}
+
+/* ── divisor sol ── */
+.divisor{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  margin-bottom:28px;
+}
+.divisor-line{flex:1;height:1px;background:rgba(242,160,19,.15)}
+.divisor-sol{
+  width:20px;height:20px;
+  position:relative;
+  flex-shrink:0;
+}
+.divisor-sol svg{width:20px;height:20px;stroke:var(--sol);stroke-width:1.5;fill:none;stroke-linecap:round;opacity:.6}
+
+/* ── links ── */
+.links{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.link-btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 20px;
+  border-radius:6px;
+  border:1px solid rgba(242,160,19,.18);
+  background:rgba(26,74,46,.35);
+  cursor:pointer;
+  text-decoration:none;
+  position:relative;
+  overflow:hidden;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+.link-btn::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(242,160,19,.06),transparent);
+  opacity:0;
+  transition:opacity .18s;
+}
+.link-btn:hover{
+  transform:translateY(-2px);
+  border-color:rgba(242,160,19,.45);
+  background:rgba(26,74,46,.55);
+}
+.link-btn:hover::before{opacity:1}
+.link-btn:active{transform:translateY(0) scale(.98)}
+
+/* destaque whatsapp */
+.link-btn.destaque{
+  background:rgba(37,211,102,.1);
+  border-color:rgba(37,211,102,.3);
+}
+.link-btn.destaque:hover{
+  background:rgba(37,211,102,.18);
+  border-color:rgba(37,211,102,.55);
+}
+.link-btn.destaque .link-icone{background:rgba(37,211,102,.15)}
+.link-btn.destaque .link-icone svg{stroke:#25D366}
+.link-btn.destaque .link-titulo{color:#b2f0c5}
+.link-btn.destaque .link-desc{color:rgba(178,240,197,.55)}
+
+.link-icone{
+  width:40px;height:40px;
+  border-radius:50%;
+  background:rgba(242,160,19,.1);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.link-icone svg{
+  width:18px;height:18px;
+  stroke:var(--sol);fill:none;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
+
+.link-texto{flex:1}
+.link-titulo{
+  font-size:14px;
+  font-weight:600;
+  color:var(--areia);
+  line-height:1.3;
+  margin-bottom:2px;
+}
+.link-desc{
+  font-size:11px;
+  color:rgba(247,237,216,.4);
+  font-family:'DM Mono',monospace;
+  letter-spacing:.5px;
+}
+
+.link-seta{
+  width:18px;height:18px;flex-shrink:0;
+  stroke:rgba(247,237,216,.25);fill:none;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+  transition:stroke .18s,transform .18s;
+}
+.link-btn:hover .link-seta{stroke:var(--sol);transform:translateX(3px)}
+
+/* ── seção label ── */
+.section-label{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(247,237,216,.25);
+  align-self:flex-start;
+  margin:20px 0 6px;
+}
+
+/* ── footer ── */
+.footer{
+  margin-top:48px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+.footer-loc{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(247,237,216,.2);
+}
+.footer-mark{
+  font-family:'Fraunces',serif;
+  font-size:13px;
+  font-style:italic;
+  color:rgba(247,237,216,.2);
+}
+.footer-mark strong{color:rgba(242,160,19,.35);font-style:normal}
+
+/* animação de entrada */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.avatar{animation:fadeUp .5s ease both,pulse-ring 3s ease-in-out 1s infinite}
+.nome{animation:fadeUp .5s .08s ease both}
+.bio{animation:fadeUp .5s .13s ease both}
+.tagline{animation:fadeUp .5s .17s ease both}
+.divisor{animation:fadeUp .5s .22s ease both}
+.links{animation:fadeUp .5s .28s ease both}
+.footer{animation:fadeUp .5s .5s ease both}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- avatar -->
+  <div class="avatar">
+    <span class="avatar-logo">Ar<span>a</span>sy</span>
+  </div>
+
+  <!-- identidade -->
+  <div class="nome">Ar<span>a</span>sy</div>
+  <div class="bio">Agência de Marketing · Ipatinga, Vale do Aço</div>
+  <p class="tagline">"Fazemos o amanhecer dos negócios que merecem brilhar."</p>
+
+  <!-- divisor -->
+  <div class="divisor">
+    <div class="divisor-line"></div>
+    <div class="divisor-sol">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
+    </div>
+    <div class="divisor-line"></div>
+  </div>
+
+  <!-- links -->
+  <div class="links">
+
+    <!-- WhatsApp — destaque -->
+    <a class="link-btn destaque" href="https://wa.me/5531933037806?text=Olá%2C%20vim%20pelo%20link%20da%20Arasy%20e%20quero%20saber%20mais%20sobre%20os%20serviços!" target="_blank" rel="noopener">
+      <div class="link-icone">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </div>
+      <div class="link-texto">
+        <div class="link-titulo">Falar no WhatsApp</div>
+        <div class="link-desc">Atendimento imediato</div>
+      </div>
+      <svg class="link-seta" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <!-- Catálogo -->
+    <a class="link-btn" href="https://arasymarketing.com.br/catalogo" target="_blank" rel="noopener">
+      <div class="link-icone">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="link-texto">
+        <div class="link-titulo">Nossos Serviços e Planos</div>
+        <div class="link-desc">Conteúdo · Tráfego · Combos</div>
+      </div>
+      <svg class="link-seta" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <!-- Instagram -->
+    <a class="link-btn" href="https://instagram.com/arasymarketing" target="_blank" rel="noopener">
+      <div class="link-icone">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </div>
+      <div class="link-texto">
+        <div class="link-titulo">Instagram</div>
+        <div class="link-desc">@arasymarketing</div>
+      </div>
+      <svg class="link-seta" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <div class="section-label">Conheça a Arasy</div>
+
+    <!-- Sobre -->
+    <a class="link-btn" href="https://arasymarketing.com.br" target="_blank" rel="noopener">
+      <div class="link-icone">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="link-texto">
+        <div class="link-titulo">Site Oficial</div>
+        <div class="link-desc">arasymarketing.com.br</div>
+      </div>
+      <svg class="link-seta" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <div class="footer-loc">Ipatinga · Vale do Aço · MG</div>
+    <div class="footer-mark">Aurora de Ideias — <strong>Arasy</strong></div>
+  </div>
+
+</div>
+</body>
+</html>
